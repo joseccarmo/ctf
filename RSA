@@ -1,0 +1,52 @@
+RSA
+  escolha dois números primos grandes (p, q) > 10
+
+  n = p * q
+
+  phi = (p-1)*(q-1)
+
+  e = número maior que 1 relativamente primo a phi e < phi
+
+  d = inverso modular de e em (phi)
+
+  m = messagem a ser criptografada
+  
+  c = messagem criptofrada
+
+encriptação
+
+  m^e = c mod n
+
+decriptação
+  
+  c^d = m mod n
+
+
+exploits
+
+> Caso o N seja pequeno(10^100) é possível descobrir p, q com sua fatoração (http://factordb.com/)
+
+> Caso a mensagem seja pequena e ocorra de c < n,  m^e = c, logo é possível calcular a e-esima raiz de c
+
+> e pequeno e uma mesma quantidade de mensagens interceptadas = e? (não testei)
+
+
+
+
+exemplo biblioteca python
+
+from Crypto.Util.number import inverse, long_to_bytes
+
+c = 62324783949134119159408816513334912534343517300880137691662780895409992760262021
+n = 1280678415822214057864524798453297819181910621573945477544758171055968245116423923
+e = 65537
+p = 674357869540600933870145899564746495319033
+q = 1899107986527483535344517113948531328331
+
+phi = (p-1)*(q-1)
+
+d = inverse(e, phi)
+
+m = pow(c,d,n)
+
+print(long_to_bytes(m))
