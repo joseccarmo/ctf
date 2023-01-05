@@ -1,3 +1,5 @@
 binwalk - verifica o binario do arquivo e possibilita extrair dados 
+  matriosca
+    arquivo com arquivos de maneira recursiva (binwalk -e -M file.png) binwalk extrair matriosca 
 
 exiftool - mostra os dados do arquivo
